@@ -1,0 +1,100 @@
+Project: RIDE Code Understanding - TinyLlama Attention Analysis
+Author: Misei Oikawa
+Model: TinyLlama-1.1B-Chat-v1.0
+
+1. Purpose of This Analysis
+
+This analysis examines why TinyLlama produces an incorrect output when asked to predict the result of a simple Python function.
+
+The model was given the following code:
+def add_numbers(a, b):
+    return a + b
+
+result = add_numbers(5, 3)
+print(result)
+
+The correct output is 8, but TinyLlama predicted 18.
+
+My goal is to use attention visualization to understand:
+• What tokens the model focuses on,
+• Where the reasoning fails,
+• How attention patterns correlate with the incorrect prediction.
+
+2. Model Output
+
+TinyLlama Output: 18
+This confirms the model does not perform true execution but instead hallucinates a reasoning pattern that leads it to “18”.
+
+3. Method: Attention-Based Explanation
+
+I generated attention heatmaps for Layers 0–3 of TinyLlama using:
+• model.generate() for output extraction
+• output_attentions=True to capture attention matrices
+• Averaging across heads
+• Applying contrast normalization at the 90th percentile, which highlights the most meaningful attention regions
+
+The heatmap file included in this submission is:
+• enhanced_attention_layers0_3.jpg
+
+4. Key Findings From Attention Heatmaps
+
+Finding 1 — Early layers over-attend to irrelevant prompt text
+
+Layers 0 and 1 show strong attention to:
+• “Output:”
+• Backticks (```)
+• The English instruction text
+
+This means the model is treating the problem as text generation, not as code execution.
+
+Finding 2 — Function body receives weak attention
+
+Tokens inside the function:
+• def
+• add_numbers
+• return
+• a + b
+
+receive much lower attention across layers.
+
+The model is not prioritizing the actual computational logic.
+
+Finding 3 — The model merges “5” and “3” into “53”, influencing the hallucinated output
+
+Heatmaps show noticeable vertical and horizontal attention activity around:
+• token "5"
+• token "3"
+
+But the model focuses more on the surrounding natural-language text
+than the arithmetic structure.
+
+As a result, it behaves like a text autocompletion model, not an interpreter—
+leading to outputs like “18” (a common language-model hallucination pattern for “5 + 3”).
+
+Finding 4 — Middle layers show unstable attention
+
+In Layers 2 and 3:
+• attention becomes more scattered,
+• code tokens mix with non-code tokens,
+• no stable computation pattern emerges.
+
+This is typical of small models that lack structured reasoning capability.
+
+5. Why the Model Got the Answer Wrong
+
+Based on the analysis:
+• TinyLlama does not form a stable representation of the function.
+• It prioritizes English explanation tokens over code.
+• It lacks the architecture/scale to perform real computation.
+• Its attention spreads across formatting characters instead of arithmetic structure.
+• Therefore, it generates an output based on statistical patterns such as “5 + 3 -> 18” seen in training text.
+
+6. Conclusion
+
+This experiment demonstrates that:
+• Attention visualization is a powerful tool for explaining LLM mistakes.
+• TinyLlama fails not because of random error, but because its attention is misaligned.
+• The model treats this as a natural-language task, not a code execution task.
+• The incorrect output (“18”) is consistent with the observed attention patterns.
+
+This analysis helps illustrate how smaller LLMs misunderstand code, contributing to the broader RIDE research objective of comparing human and AI code understanding.
