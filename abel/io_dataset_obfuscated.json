@@ -1,0 +1,314 @@
+[
+    {
+        "code": "def x(a, b):\n    return a + b\n\nresult = x(5, 3)\nprint(result)",
+        "input": "5, 3",
+        "expected_output": "8",
+        "description": "Simple addition function"
+    },
+    {
+        "code": "def y(n):\n    if n <= 1:\n        return 1\n    return n * y(n-1)\n\nprint(y(5))",
+        "input": "5",
+        "expected_output": "120",
+        "description": "Factorial calculation"
+    },
+    {
+        "code": "def z(lst):\n    m = lst[0]\n    for i in lst:\n        if i > m:\n            m = i\n    return m\n\nnums = [3, 7, 2, 9, 1]\nprint(z(nums))",
+        "input": "[3, 7, 2, 9, 1]",
+        "expected_output": "9",
+        "description": "Find maximum number in list"
+    },
+    {
+        "code": "def a(n):\n    if n < 2:\n        return False\n    for i in range(2, int(n**0.5) + 1):\n        if n % i == 0:\n            return False\n    return True\n\nprint(a(17))",
+        "input": "17",
+        "expected_output": "True",
+        "description": "Check if number is prime"
+    },
+    {
+        "code": "def b(n):\n    if n <= 1:\n        return n\n    return b(n-1) + b(n-2)\n\nprint(b(6))",
+        "input": "6",
+        "expected_output": "8",
+        "description": "Fibonacci sequence"
+    },
+    {
+        "code": "def c(s):\n    return s[::-1]\n\nprint(c('hello'))",
+        "input": "'hello'",
+        "expected_output": "olleh",
+        "description": "Reverse a string"
+    },
+    {
+        "code": "def d(s):\n    v = 'aeiouAEIOU'\n    cnt = 0\n    for ch in s:\n        if ch in v:\n            cnt += 1\n    return cnt\n\nprint(d('programming'))",
+        "input": "'programming'",
+        "expected_output": "3",
+        "description": "Count vowels in string"
+    },
+    {
+        "code": "def e(arr):\n    n = len(arr)\n    for i in range(n):\n        for j in range(0, n-i-1):\n            if arr[j] > arr[j+1]:\n                arr[j], arr[j+1] = arr[j+1], arr[j]\n    return arr\n\nprint(e([64, 34, 25, 12, 22]))",
+        "input": "[64, 34, 25, 12, 22]",
+        "expected_output": "[12, 22, 25, 34, 64]",
+        "description": "Bubble sort algorithm"
+    },
+    {
+        "code": "def f(arr, t):\n    l, r = 0, len(arr) - 1\n    while l <= r:\n        m = (l + r) // 2\n        if arr[m] == t:\n            return m\n        elif arr[m] < t:\n            l = m + 1\n        else:\n            r = m - 1\n    return -1\n\nprint(f([1, 3, 5, 7, 9], 5))",
+        "input": "[1, 3, 5, 7, 9], 5",
+        "expected_output": "2",
+        "description": "Binary search algorithm"
+    },
+    {
+        "code": "def g(a, b):\n    while b:\n        a, b = b, a % b\n    return a\n\nprint(g(48, 18))",
+        "input": "48, 18",
+        "expected_output": "6",
+        "description": "Greatest common divisor"
+    },
+    {
+        "code": "def h(s):\n    s = s.lower().replace(' ', '')\n    return s == s[::-1]\n\nprint(h('racecar'))",
+        "input": "'racecar'",
+        "expected_output": "True",
+        "description": "Check if string is palindrome"
+    },
+    {
+        "code": "def i(l1, l2):\n    res = []\n    p1 = p2 = 0\n    while p1 < len(l1) and p2 < len(l2):\n        if l1[p1] <= l2[p2]:\n            res.append(l1[p1])\n            p1 += 1\n        else:\n            res.append(l2[p2])\n            p2 += 1\n    res.extend(l1[p1:])\n    res.extend(l2[p2:])\n    return res\n\nprint(i([1, 3, 5], [2, 4, 6]))",
+        "input": "[1, 3, 5], [2, 4, 6]",
+        "expected_output": "[1, 2, 3, 4, 5, 6]",
+        "description": "Merge two sorted lists"
+    },
+    {
+        "code": "def j(b, e):\n    if e == 0:\n        return 1\n    elif e < 0:\n        return 1 / j(b, -e)\n    else:\n        return b * j(b, e - 1)\n\nprint(j(2, 3))",
+        "input": "2, 3",
+        "expected_output": "8",
+        "description": "Calculate power recursively"
+    },
+    {
+        "code": "def k(lst):\n    seen = set()\n    res = []\n    for item in lst:\n        if item not in seen:\n            seen.add(item)\n            res.append(item)\n    return res\n\nprint(k([1, 2, 2, 3, 3, 3, 4]))",
+        "input": "[1, 2, 2, 3, 3, 3, 4]",
+        "expected_output": "[1, 2, 3, 4]",
+        "description": "Remove duplicates from list"
+    },
+    {
+        "code": "def l(text):\n    words = text.split()\n    return len(words)\n\nprint(l('The quick brown fox jumps'))",
+        "input": "'The quick brown fox jumps'",
+        "expected_output": "5",
+        "description": "Count words in text"
+    },
+    {
+        "code": "def m(arr, t):\n    for i in range(len(arr)):\n        if arr[i] == t:\n            return i\n    return -1\n\nprint(m([10, 20, 30, 40, 50], 30))",
+        "input": "[10, 20, 30, 40, 50], 30",
+        "expected_output": "2",
+        "description": "Linear search algorithm"
+    },
+    {
+        "code": "def n(arr):\n    sz = len(arr)\n    for i in range(sz):\n        min_idx = i\n        for j in range(i+1, sz):\n            if arr[j] < arr[min_idx]:\n                min_idx = j\n        arr[i], arr[min_idx] = arr[min_idx], arr[i]\n    return arr\n\nprint(n([64, 25, 12, 22, 11]))",
+        "input": "[64, 25, 12, 22, 11]",
+        "expected_output": "[11, 12, 22, 25, 64]",
+        "description": "Selection sort algorithm"
+    },
+    {
+        "code": "def o(arr):\n    for i in range(1, len(arr)):\n        key = arr[i]\n        j = i - 1\n        while j >= 0 and arr[j] > key:\n            arr[j + 1] = arr[j]\n            j -= 1\n        arr[j + 1] = key\n    return arr\n\nprint(o([12, 11, 13, 5, 6]))",
+        "input": "[12, 11, 13, 5, 6]",
+        "expected_output": "[5, 6, 11, 12, 13]",
+        "description": "Insertion sort algorithm"
+    },
+    {
+        "code": "def p(arr):\n    if len(arr) <= 1:\n        return arr\n    pivot = arr[len(arr) // 2]\n    left = [x for x in arr if x < pivot]\n    middle = [x for x in arr if x == pivot]\n    right = [x for x in arr if x > pivot]\n    return p(left) + middle + p(right)\n\nprint(p([3, 6, 8, 10, 1, 2, 1]))",
+        "input": "[3, 6, 8, 10, 1, 2, 1]",
+        "expected_output": "[1, 1, 2, 3, 6, 8, 10]",
+        "description": "Quick sort algorithm"
+    },
+    {
+        "code": "def q(arr):\n    if len(arr) <= 1:\n        return arr\n    mid = len(arr) // 2\n    left = q(arr[:mid])\n    right = q(arr[mid:])\n    return r(left, right)\n\ndef r(left, right):\n    result = []\n    i = j = 0\n    while i < len(left) and j < len(right):\n        if left[i] <= right[j]:\n            result.append(left[i])\n            i += 1\n        else:\n            result.append(right[j])\n            j += 1\n    result.extend(left[i:])\n    result.extend(right[j:])\n    return result\n\nprint(q([38, 27, 43, 3, 9, 82, 10]))",
+        "input": "[38, 27, 43, 3, 9, 82, 10]",
+        "expected_output": "[3, 9, 10, 27, 38, 43, 82]",
+        "description": "Merge sort algorithm"
+    },
+    {
+        "code": "def s(arr):\n    n = len(arr)\n    for i in range(n // 2 - 1, -1, -1):\n        t(arr, n, i)\n    for i in range(n - 1, 0, -1):\n        arr[0], arr[i] = arr[i], arr[0]\n        t(arr, i, 0)\n    return arr\n\ndef t(arr, n, i):\n    largest = i\n    left = 2 * i + 1\n    right = 2 * i + 2\n    if left < n and arr[left] > arr[largest]:\n        largest = left\n    if right < n and arr[right] > arr[largest]:\n        largest = right\n    if largest != i:\n        arr[i], arr[largest] = arr[largest], arr[i]\n        t(arr, n, largest)\n\nprint(s([12, 11, 13, 5, 6, 7]))",
+        "input": "[12, 11, 13, 5, 6, 7]",
+        "expected_output": "[5, 6, 7, 11, 12, 13]",
+        "description": "Heap sort algorithm"
+    },
+    {
+        "code": "def u(arr):\n    max_val = max(arr)\n    count = [0] * (max_val + 1)\n    for num in arr:\n        count[num] += 1\n    result = []\n    for i in range(len(count)):\n        result.extend([i] * count[i])\n    return result\n\nprint(u([4, 2, 2, 8, 3, 3, 1]))",
+        "input": "[4, 2, 2, 8, 3, 3, 1]",
+        "expected_output": "[1, 2, 2, 3, 3, 4, 8]",
+        "description": "Counting sort algorithm"
+    },
+    {
+        "code": "def v(arr):\n    max_val = max(arr)\n    exp = 1\n    while max_val // exp > 0:\n        w(arr, exp)\n        exp *= 10\n    return arr\n\ndef w(arr, exp):\n    n = len(arr)\n    output = [0] * n\n    count = [0] * 10\n    for i in range(n):\n        index = arr[i] // exp\n        count[index % 10] += 1\n    for i in range(1, 10):\n        count[i] += count[i - 1]\n    i = n - 1\n    while i >= 0:\n        index = arr[i] // exp\n        output[count[index % 10] - 1] = arr[i]\n        count[index % 10] -= 1\n        i -= 1\n    for i in range(n):\n        arr[i] = output[i]\n\nprint(v([170, 45, 75, 90, 2, 802, 24, 66]))",
+        "input": "[170, 45, 75, 90, 2, 802, 24, 66]",
+        "expected_output": "[2, 24, 45, 66, 75, 90, 170, 802]",
+        "description": "Radix sort algorithm"
+    },
+    {
+        "code": "def x1(arr):\n    max_val = max(arr)\n    min_val = min(arr)\n    bucket_range = (max_val - min_val) / len(arr)\n    buckets = [[] for _ in range(len(arr))]\n    for num in arr:\n        bucket_index = int((num - min_val) / bucket_range)\n        if bucket_index == len(buckets):\n            bucket_index -= 1\n        buckets[bucket_index].append(num)\n    result = []\n    for bucket in buckets:\n        bucket.sort()\n        result.extend(bucket)\n    return result\n\nprint(x1([0.42, 0.32, 0.33, 0.52, 0.37, 0.47, 0.51]))",
+        "input": "[0.42, 0.32, 0.33, 0.52, 0.37, 0.47, 0.51]",
+        "expected_output": "[0.32, 0.33, 0.37, 0.42, 0.47, 0.51, 0.52]",
+        "description": "Bucket sort algorithm"
+    },
+    {
+        "code": "def y1(g, s, v=None):\n    if v is None:\n        v = set()\n    v.add(s)\n    res = [s]\n    for n in g[s]:\n        if n not in v:\n            res.extend(y1(g, n, v))\n    return res\n\ng = {'A': ['B', 'C'], 'B': ['D', 'E'], 'C': ['F'], 'D': [], 'E': ['F'], 'F': []}\nprint(y1(g, 'A'))",
+        "input": "g, 'A'",
+        "expected_output": "['A', 'B', 'D', 'E', 'F', 'C']",
+        "description": "Depth-first search algorithm"
+    },
+    {
+        "code": "def z1(g, s):\n    v = set()\n    q = [s]\n    v.add(s)\n    res = []\n    while q:\n        vtx = q.pop(0)\n        res.append(vtx)\n        for n in g[vtx]:\n            if n not in v:\n                v.add(n)\n                q.append(n)\n    return res\n\ng = {'A': ['B', 'C'], 'B': ['D', 'E'], 'C': ['F'], 'D': [], 'E': ['F'], 'F': []}\nprint(z1(g, 'A'))",
+        "input": "g, 'A'",
+        "expected_output": "['A', 'B', 'C', 'D', 'E', 'F']",
+        "description": "Breadth-first search algorithm"
+    },
+    {
+        "code": "def a1(g, s):\n    d = {v: float('infinity') for v in g}\n    d[s] = 0\n    u = set(g.keys())\n    while u:\n        c = min(u, key=lambda v: d[v])\n        u.remove(c)\n        for n, w in g[c].items():\n            dist = d[c] + w\n            if dist < d[n]:\n                d[n] = dist\n    return d\n\ng = {'A': {'B': 1, 'C': 4}, 'B': {'A': 1, 'C': 2, 'D': 5}, 'C': {'A': 4, 'B': 2, 'D': 1}, 'D': {'B': 5, 'C': 1}}\nprint(a1(g, 'A'))",
+        "input": "g, 'A'",
+        "expected_output": "{'A': 0, 'B': 1, 'C': 3, 'D': 4}",
+        "description": "Dijkstra's shortest path algorithm"
+    },
+    {
+        "code": "def b1(g):\n    n = len(g)\n    d = [[float('inf')] * n for _ in range(n)]\n    for i in range(n):\n        d[i][i] = 0\n    for u in range(n):\n        for v, w in g[u].items():\n            d[u][v] = w\n    for k in range(n):\n        for i in range(n):\n            for j in range(n):\n                d[i][j] = min(d[i][j], d[i][k] + d[k][j])\n    return d\n\ng = {0: {1: 3, 2: 6}, 1: {0: 3, 2: 2}, 2: {0: 6, 1: 2}}\nprint(b1(g))",
+        "input": "g",
+        "expected_output": "[[0, 3, 5], [3, 0, 2], [5, 2, 0]]",
+        "description": "Floyd-Warshall all-pairs shortest path"
+    },
+    {
+        "code": "def c1(items, cap):\n    n = len(items)\n    dp = [[0 for _ in range(cap + 1)] for _ in range(n + 1)]\n    for i in range(1, n + 1):\n        w, v = items[i-1]\n        for j in range(cap + 1):\n            if w <= j:\n                dp[i][j] = max(dp[i-1][j], dp[i-1][j-w] + v)\n            else:\n                dp[i][j] = dp[i-1][j]\n    return dp[n][cap]\n\nitems = [(10, 60), (20, 100), (30, 120)]\nprint(c1(items, 50))",
+        "input": "items, 50",
+        "expected_output": "220",
+        "description": "0/1 Knapsack problem"
+    },
+    {
+        "code": "def d1(t1, t2):\n    m, n = len(t1), len(t2)\n    dp = [[0] * (n + 1) for _ in range(m + 1)]\n    for i in range(1, m + 1):\n        for j in range(1, n + 1):\n            if t1[i-1] == t2[j-1]:\n                dp[i][j] = dp[i-1][j-1] + 1\n            else:\n                dp[i][j] = max(dp[i-1][j], dp[i][j-1])\n    return dp[m][n]\n\nprint(d1('abcde', 'ace'))",
+        "input": "'abcde', 'ace'",
+        "expected_output": "3",
+        "description": "Longest common subsequence"
+    },
+    {
+        "code": "def e1(s1, s2):\n    m, n = len(s1), len(s2)\n    dp = [[0] * (n + 1) for _ in range(m + 1)]\n    for i in range(m + 1):\n        dp[i][0] = i\n    for j in range(n + 1):\n        dp[0][j] = j\n    for i in range(1, m + 1):\n        for j in range(1, n + 1):\n            if s1[i-1] == s2[j-1]:\n                dp[i][j] = dp[i-1][j-1]\n            else:\n                dp[i][j] = 1 + min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1])\n    return dp[m][n]\n\nprint(e1('kitten', 'sitting'))",
+        "input": "'kitten', 'sitting'",
+        "expected_output": "3",
+        "description": "Edit distance (Levenshtein distance)"
+    },
+    {
+        "code": "def f1(coins, amt):\n    dp = [float('inf')] * (amt + 1)\n    dp[0] = 0\n    for c in coins:\n        for i in range(c, amt + 1):\n            dp[i] = min(dp[i], dp[i - c] + 1)\n    return dp[amt] if dp[amt] != float('inf') else -1\n\nprint(f1([1, 3, 4], 6))",
+        "input": "[1, 3, 4], 6",
+        "expected_output": "2",
+        "description": "Coin change problem"
+    },
+    {
+        "code": "def g1(nums):\n    if not nums:\n        return 0\n    dp = [1] * len(nums)\n    for i in range(1, len(nums)):\n        for j in range(i):\n            if nums[j] < nums[i]:\n                dp[i] = max(dp[i], dp[j] + 1)\n    return max(dp)\n\nprint(g1([10, 9, 2, 5, 3, 7, 101, 18]))",
+        "input": "[10, 9, 2, 5, 3, 7, 101, 18]",
+        "expected_output": "4",
+        "description": "Longest increasing subsequence"
+    },
+    {
+        "code": "def h1(dims):\n    n = len(dims) - 1\n    dp = [[0] * n for _ in range(n)]\n    for l in range(2, n + 1):\n        for i in range(n - l + 1):\n            j = i + l - 1\n            dp[i][j] = float('inf')\n            for k in range(i, j):\n                cost = dp[i][k] + dp[k+1][j] + dims[i] * dims[k+1] * dims[j+1]\n                dp[i][j] = min(dp[i][j], cost)\n    return dp[0][n-1]\n\nprint(h1([1, 2, 3, 4]))",
+        "input": "[1, 2, 3, 4]",
+        "expected_output": "18",
+        "description": "Matrix chain multiplication optimization"
+    },
+    {
+        "code": "def i1(prices, l):\n    dp = [0] * (l + 1)\n    for i in range(1, l + 1):\n        for j in range(i):\n            dp[i] = max(dp[i], prices[j] + dp[i - j - 1])\n    return dp[l]\n\nprint(i1([1, 5, 8, 9, 10, 17, 17, 20], 8))",
+        "input": "[1, 5, 8, 9, 10, 17, 17, 20], 8",
+        "expected_output": "22",
+        "description": "Rod cutting problem"
+    },
+    {
+        "code": "def j1(nums, t):\n    dp = [False] * (t + 1)\n    dp[0] = True\n    for n in nums:\n        for i in range(t, n - 1, -1):\n            dp[i] = dp[i] or dp[i - n]\n    return dp[t]\n\nprint(j1([3, 34, 4, 12, 5, 2], 9))",
+        "input": "[3, 34, 4, 12, 5, 2], 9",
+        "expected_output": "True",
+        "description": "Subset sum problem"
+    },
+    {
+        "code": "def k1(nums):\n    total = sum(nums)\n    if total % 2 != 0:\n        return False\n    t = total // 2\n    dp = [False] * (t + 1)\n    dp[0] = True\n    for n in nums:\n        for i in range(t, n - 1, -1):\n            dp[i] = dp[i] or dp[i - n]\n    return dp[t]\n\nprint(k1([1, 5, 11, 5]))",
+        "input": "[1, 5, 11, 5]",
+        "expected_output": "True",
+        "description": "Partition equal subset sum"
+    },
+    {
+        "code": "def l1(s, wd):\n    ws = set(wd)\n    dp = [False] * (len(s) + 1)\n    dp[0] = True\n    for i in range(1, len(s) + 1):\n        for j in range(i):\n            if dp[j] and s[j:i] in ws:\n                dp[i] = True\n                break\n    return dp[len(s)]\n\nprint(l1('leetcode', ['leet', 'code']))",
+        "input": "'leetcode', ['leet', 'code']",
+        "expected_output": "True",
+        "description": "Word break problem"
+    },
+    {
+        "code": "def m1(m, n):\n    dp = [[1] * n for _ in range(m)]\n    for i in range(1, m):\n        for j in range(1, n):\n            dp[i][j] = dp[i-1][j] + dp[i][j-1]\n    return dp[m-1][n-1]\n\nprint(m1(3, 7))",
+        "input": "3, 7",
+        "expected_output": "28",
+        "description": "Unique paths in grid"
+    },
+    {
+        "code": "def n1(og):\n    m, n = len(og), len(og[0])\n    dp = [[0] * n for _ in range(m)]\n    dp[0][0] = 1 if og[0][0] == 0 else 0\n    for i in range(m):\n        for j in range(n):\n            if og[i][j] == 1:\n                dp[i][j] = 0\n            else:\n                if i > 0:\n                    dp[i][j] += dp[i-1][j]\n                if j > 0:\n                    dp[i][j] += dp[i][j-1]\n    return dp[m-1][n-1]\n\nprint(n1([[0,0,0],[0,1,0],[0,0,0]]))",
+        "input": "[[0,0,0],[0,1,0],[0,0,0]]",
+        "expected_output": "2",
+        "description": "Unique paths with obstacles"
+    },
+    {
+        "code": "def o1(g):\n    m, n = len(g), len(g[0])\n    dp = [[0] * n for _ in range(m)]\n    dp[0][0] = g[0][0]\n    for i in range(1, m):\n        dp[i][0] = dp[i-1][0] + g[i][0]\n    for j in range(1, n):\n        dp[0][j] = dp[0][j-1] + g[0][j]\n    for i in range(1, m):\n        for j in range(1, n):\n            dp[i][j] = min(dp[i-1][j], dp[i][j-1]) + g[i][j]\n    return dp[m-1][n-1]\n\nprint(o1([[1,3,1],[1,5,1],[4,2,1]]))",
+        "input": "[[1,3,1],[1,5,1],[4,2,1]]",
+        "expected_output": "7",
+        "description": "Minimum path sum in grid"
+    },
+    {
+        "code": "def p1(n):\n    if n <= 2:\n        return n\n    dp = [0] * (n + 1)\n    dp[1] = 1\n    dp[2] = 2\n    for i in range(3, n + 1):\n        dp[i] = dp[i-1] + dp[i-2]\n    return dp[n]\n\nprint(p1(5))",
+        "input": "5",
+        "expected_output": "8",
+        "description": "Climbing stairs problem"
+    },
+    {
+        "code": "def q1(nums):\n    if not nums:\n        return 0\n    if len(nums) == 1:\n        return nums[0]\n    dp = [0] * len(nums)\n    dp[0] = nums[0]\n    dp[1] = max(nums[0], nums[1])\n    for i in range(2, len(nums)):\n        dp[i] = max(dp[i-1], dp[i-2] + nums[i])\n    return dp[-1]\n\nprint(q1([2, 7, 9, 3, 1]))",
+        "input": "[2, 7, 9, 3, 1]",
+        "expected_output": "12",
+        "description": "House robber problem"
+    },
+    {
+        "code": "def r1(s):\n    if not s:\n        return ''\n    start = 0\n    max_len = 1\n    for i in range(len(s)):\n        l, r = i, i\n        while l >= 0 and r < len(s) and s[l] == s[r]:\n            if r - l + 1 > max_len:\n                start = l\n                max_len = r - l + 1\n            l -= 1\n            r += 1\n        l, r = i, i + 1\n        while l >= 0 and r < len(s) and s[l] == s[r]:\n            if r - l + 1 > max_len:\n                start = l\n                max_len = r - l + 1\n            l -= 1\n            r += 1\n    return s[start:start + max_len]\n\nprint(r1('babad'))",
+        "input": "'babad'",
+        "expected_output": "bab",
+        "description": "Longest palindromic substring"
+    },
+    {
+        "code": "def s1(strs):\n    if not strs:\n        return ''\n    p = strs[0]\n    for i in range(1, len(strs)):\n        while not strs[i].startswith(p):\n            p = p[:-1]\n            if not p:\n                return ''\n    return p\n\nprint(s1(['flower', 'flow', 'flight']))",
+        "input": "['flower', 'flow', 'flight']",
+        "expected_output": "fl",
+        "description": "Longest common prefix"
+    },
+    {
+        "code": "def t1(s):\n    st = []\n    m = {')': '(', '}': '{', ']': '['}\n    for c in s:\n        if c in m:\n            if not st or st.pop() != m[c]:\n                return False\n        else:\n            st.append(c)\n    return not st\n\nprint(t1('()[]{}'))",
+        "input": "'()[]{}'",
+        "expected_output": "True",
+        "description": "Valid parentheses"
+    },
+    {
+        "code": "def u1(n):\n    res = []\n    def bt(cur, oc, cc):\n        if len(cur) == 2 * n:\n            res.append(cur)\n            return\n        if oc < n:\n            bt(cur + '(', oc + 1, cc)\n        if cc < oc:\n            bt(cur + ')', oc, cc + 1)\n    bt('', 0, 0)\n    return res\n\nprint(u1(3))",
+        "input": "3",
+        "expected_output": "['((()))', '(()())', '(())()', '()(())', '()()()']",
+        "description": "Generate parentheses"
+    },
+    {
+        "code": "def v1(cands, t):\n    res = []\n    def bt(rem, cur, start):\n        if rem == 0:\n            res.append(cur[:])\n            return\n        for i in range(start, len(cands)):\n            if cands[i] <= rem:\n                cur.append(cands[i])\n                bt(rem - cands[i], cur, i)\n                cur.pop()\n    bt(t, [], 0)\n    return res\n\nprint(v1([2, 3, 6, 7], 7))",
+        "input": "[2, 3, 6, 7], 7",
+        "expected_output": "[[2, 2, 3], [7]]",
+        "description": "Combination sum"
+    },
+    {
+        "code": "def w1(nums):\n    res = []\n    def bt(cur):\n        if len(cur) == len(nums):\n            res.append(cur[:])\n            return\n        for n in nums:\n            if n not in cur:\n                cur.append(n)\n                bt(cur)\n                cur.pop()\n    bt([])\n    return res\n\nprint(w1([1, 2, 3]))",
+        "input": "[1, 2, 3]",
+        "expected_output": "[[1, 2, 3], [1, 3, 2], [2, 1, 3], [2, 3, 1], [3, 1, 2], [3, 2, 1]]",
+        "description": "Permutations"
+    },
+    {
+        "code": "def x2(nums):\n    res = []\n    def bt(start, cur):\n        res.append(cur[:])\n        for i in range(start, len(nums)):\n            cur.append(nums[i])\n            bt(i + 1, cur)\n            cur.pop()\n    bt(0, [])\n    return res\n\nprint(x2([1, 2, 3]))",
+        "input": "[1, 2, 3]",
+        "expected_output": "[[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]",
+        "description": "Subsets generation"
+    },
+    {
+        "code": "def y2(n):\n    res = []\n    b = [['.' for _ in range(n)] for _ in range(n)]\n    def is_safe(r, c):\n        for i in range(r):\n            if b[i][c] == 'Q':\n                return False\n        for i, j in zip(range(r-1, -1, -1), range(c-1, -1, -1)):\n            if b[i][j] == 'Q':\n                return False\n        for i, j in zip(range(r-1, -1, -1), range(c+1, n)):\n            if b[i][j] == 'Q':\n                return False\n        return True\n    def bt(r):\n        if r == n:\n            res.append([''.join(row) for row in b])\n            return\n        for c in range(n):\n            if is_safe(r, c):\n                b[r][c] = 'Q'\n                bt(r + 1)\n                b[r][c] = '.'\n    bt(0)\n    return len(res)\n\nprint(y2(4))",
+        "input": "4",
+        "expected_output": "2",
+        "description": "N-Queens problem"
+    },
+    {
+        "code": "def z2(b):\n    def is_valid(b, r, c, n):\n        for i in range(9):\n            if b[r][i] == n or b[i][c] == n:\n                return False\n        sr, sc = 3 * (r // 3), 3 * (c // 3)\n        for i in range(3):\n            for j in range(3):\n                if b[sr + i][sc + j] == n:\n                    return False\n        return True\n    def solve(b):\n        for i in range(9):\n            for j in range(9):\n                if b[i][j] == '.':\n                    for n in '123456789':\n                        if is_valid(b, i, j, n):\n                            b[i][j] = n\n                            if solve(b):\n                                return True\n                            b[i][j] = '.'\n                    return False\n        return True\n    solve(b)\n    return b\n\nb = [['5','3','.','.','7','.','.','.','.'],['6','.','.','1','9','5','.','.','.'],['.','9','8','.','.','.','.','6','.'],['8','.','.','.','6','.','.','.','3'],['4','.','.','8','.','3','.','.','1'],['7','.','.','.','2','.','.','.','6'],['.','6','.','.','.','.','2','8','.'],['.','.','.','4','1','9','.','.','5'],['.','.','.','.','8','.','.','7','9']]\nprint(z2(b))",
+        "input": "b",
+        "expected_output": "[['5', '3', '4', '6', '7', '8', '9', '1', '2'], ['6', '7', '2', '1', '9', '5', '3', '4', '8'], ['1', '9', '8', '3', '4', '2', '5', '6', '7'], ['8', '5', '9', '7', '6', '1', '4', '2', '3'], ['4', '2', '6', '8', '5', '3', '7', '9', '1'], ['7', '1', '3', '9', '2', '4', '8', '5', '6'], ['9', '6', '1', '5', '3', '7', '2', '8', '4'], ['2', '8', '7', '4', '1', '9', '6', '3', '5'], ['3', '4', '5', '2', '8', '6', '1', '7', '9']]",
+        "description": "Sudoku solver"
+    }
+]
